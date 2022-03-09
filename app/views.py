@@ -1,10 +1,11 @@
-from flask import render_template, request,redirect,url_for
 from app import app
 from app import forms
+from flask import render_template, request
 from app.forms import LoginForm, RegistrationForm
+from .models import User
+# from ..import db
 
 #views
-
 @app.route('/')
 @app.route('/index')
 def index():
