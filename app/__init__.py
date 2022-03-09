@@ -1,19 +1,20 @@
 # from ensurepip import bootstrap
+
+from distutils.command.config import config
 from flask import Flask
 from flask_bootstrap import Bootstrap
-from config import Config
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_login import LoginManager
 
-#Initializing application 
-app = Flask(__name__) 
-app.config.from_object(Config)
+app = Flask(__name__)
+app.config.from_object(config)
 
+login_manager = LoginManager()
 bootstrap = Bootstrap(app)
-db = SQLAlchemy #creatin a database instance
+db = SQLAlchemy(app)
+migrate = Migrate(app,db)
 
-# initializing flask extentions
-bootstrap.init_app(app)
-db.init_app(app)
+from app import routes, errors, models
 
 
-from app import models,errors, views
