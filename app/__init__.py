@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from config import Config
 from flask_login import LoginManager
 from flask_moment import Moment
+import logging
 
 
 login_manager = LoginManager()
@@ -33,6 +34,12 @@ def create_app(config_class=Config):
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
+    if not app.debug and not app.testing:
+        if app.config['LOG_TO_STDOUT']:
+            stream_handler = logging.StreamHandler()
+            stream_handler.setLevel(logging.INFO)
+            app.logger.addHandler(stream_handler)
+    
     return app
 
 from app import models
