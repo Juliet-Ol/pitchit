@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <tr valign='top'>
+        <td width="30px">
+            <a href=" # ">
+                <img src=" {{ pitch.author.avatar(36) }} ">
+            </a>
+        </td>
+        <td>
+            <span ># {{ pitch.id }} </span>
+            <span>
+                <a href="#">
+                    <span > {{ pitch.author.username }} </span>  
+                </a>
+            </span>
+            said {{ moment(pitch.timestamp).fromNow() }}:
+            <br>
+            <div>
+                {{ pitch.content }}
+            </div>
+        </td>
+    </tr>    
+</table>
