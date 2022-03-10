@@ -11,7 +11,7 @@ def load_user(id):
 
 
 class User(UserMixin, db.Model):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
 
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),unique=True, nullable=False, index = True)
@@ -41,7 +41,7 @@ class Pitch(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     content = db.Column(db.String(255),nullable=False)
     timestamp = db.Column(db.DateTime,index=True , default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __repr__(self):
         return f'Pitch: {self.content}'            
