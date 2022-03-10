@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block app_context %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1> {{ title }} </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p>The administrator has been modified. Sorry for the inconvinience
+                <a href="{{ url_for('index')}}"></a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
