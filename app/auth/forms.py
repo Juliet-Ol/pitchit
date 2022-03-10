@@ -1,7 +1,6 @@
-import email
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField,SubmitField, TextAreaField
-from wtforms.validators import DataRequired, Length,Email,Regexp, EqualTo
+from wtforms import StringField, PasswordField, BooleanField,SubmitField
+from wtforms.validators import DataRequired, Email, EqualTo
 
 class LoginForm(FlaskForm):
     username = StringField('username', validators=[DataRequired()])
@@ -15,7 +14,3 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm password',validators =[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register') 
-
-class PitchForm(FlaskForm):
-    content = TextAreaField('Pitch', validators=[DataRequired()])
-    submit = SubmitField('Submit')    
