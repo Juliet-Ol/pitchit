@@ -9,3 +9,11 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False  
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
+
+#email configurations
+
+MAIL_SERVER = 'SMTP.googlemail.com'
+MAIL_PORT = 587
+MAIL_USE_TLS = True
+MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
+MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")

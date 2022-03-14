@@ -44,4 +44,17 @@ class Pitch(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __repr__(self):
-        return f'Pitch: {self.content}'            
+        return f'Pitch: {self.content}'  
+
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(255),unique=True, nullable=False, index = True)
+    email = db.Column(db.String(255),unique = True,index = True, nullable=False)   
+
+    def __repr__(self):
+        return f'Comment: {self.content}'  
+    
+                   

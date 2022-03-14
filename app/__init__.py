@@ -6,6 +6,7 @@ from config import Config
 from flask_login import LoginManager
 from flask_moment import Moment
 import logging
+from flask_mail import Mail
 
 
 login_manager = LoginManager()
@@ -13,6 +14,7 @@ bootstrap = Bootstrap()
 db = SQLAlchemy()
 migrate = Migrate()
 moment = Moment()
+mail = Mail()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -24,6 +26,7 @@ def create_app(config_class=Config):
     migrate.init_app(app, db)
     login_manager.init_app(app)
     moment.init_app(app)
+    mail.init_app(app)
 
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
@@ -42,4 +45,4 @@ def create_app(config_class=Config):
     
     return app
 
-from app import models
+#from app import models

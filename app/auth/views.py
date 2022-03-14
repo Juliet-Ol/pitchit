@@ -4,6 +4,8 @@ from flask import render_template,redirect,  url_for, flash
 from app.auth.forms import LoginForm, RegistrationForm
 from ..models import User
 from flask_login import current_user, login_user, logout_user
+from ..email import mail_message
+# import smtplib
 
 
 @bp.route('/login', methods = ['GET', 'POST'])    
@@ -33,6 +35,9 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash(f'Account created for {user.username}')
+
+        mail_message("Welcome to pitchit","email/welcome_user",user.email,user=user)
+
         return redirect(url_for('auth.login'))
 
     return render_template('register.html', title='Register', form=form)   

@@ -1,4 +1,5 @@
 
+from xml.etree.ElementTree import Comment
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, TextAreaField
 from wtforms.validators import DataRequired
@@ -6,5 +7,6 @@ from wtforms.validators import DataRequired
 
 
 class PitchForm(FlaskForm):
-    content = TextAreaField('Pitch', validators=[DataRequired()])
-    submit = SubmitField('Submit')    
+    content = TextAreaField('Pitch', validators=[DataRequired()])    
+    submit = SubmitField('Submit') 
+      
